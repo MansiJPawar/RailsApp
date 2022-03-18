@@ -1,0 +1,16 @@
+# #setting env for s3
+
+# CarrierWave.configure do |config|
+#   config.fog_credentials = {
+#     provider:              'AWS',
+#     aws_access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+#     aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+#   }
+
+#   config.storage = :fog
+#   config.permissions = 0666
+#   config.cache_dir = '#{Rails.root}/top/'
+#   config.fog_directory = ENV['FOG DIRECTORY']
+#   config.fog_attributes = { "Cache-Control" => "max-age=#{365.day.to_i}"} #optional
+
+# end

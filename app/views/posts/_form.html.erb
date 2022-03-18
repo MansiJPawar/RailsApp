@@ -1,0 +1,10 @@
+<%= form_for @post, html: {multipart: true} do |f| %>
+
+<div>
+<!-- image upload -->
+<%= f.file_field :image, class: "form-control" %>
+<%= f.hidden_field :image_cache %>
+</div>
+
+<%= f.submit "Save post", class: "btn btn-success" %>
+<% end %>

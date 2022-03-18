@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   #dashboard
   get "/dashboard" => "accounts#index"
   
+  
+  resources :posts, only: [:new,:create,:show]
+
   #route defined as 'controllername#methodname'
   root to: "public#homepage"
   

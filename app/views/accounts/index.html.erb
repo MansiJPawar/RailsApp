@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+    <!-- loop posts -->
+    <% @posts.each do |post| %> 
+    <%= @post.account.username %>
+    <%= image_tag post.image.url, class: "img img-fluid" %>
+    <% end %>
+    </div>
+  </div>
+</div>
