@@ -51,6 +51,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #manually added #allows work with ENV varials in rails #handles service like heroku
+  gem "figaro"
 end
 
 group :test do
@@ -66,3 +69,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #DEVISE
 gem 'devise'
+
+#JQUERY
+gem 'jquery-rails', '~> 4.4'
+
+
+#uploads image to Amazon S3
+#file handling and image upload
+gem 'carrierwave', "0.10.0"
+
+#goes well with carrier wave and lets use s3 bucket
+gem 'fog', '~> 1.37.0'
+
+# Use ActiveStorage variant#Image resizing
+gem 'mini_magick'

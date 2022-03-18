@@ -27,6 +27,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # added via devise setup#sets default url for emails
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5000 }
+
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
