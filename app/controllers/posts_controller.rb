@@ -8,6 +8,10 @@ class PostsController < ApplicationController
   def create
     #direct to create post
     @post = Post.new(post_params)
+
+    #associate and check if user signed in
+    @post.account_id = current_account.id if account_signed_in?
+
     #template to save post and redirect
     if @post.save
       redirect_to dashboard_path, flash: { success: "Post was created successfully!"}
