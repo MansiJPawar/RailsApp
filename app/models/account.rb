@@ -6,4 +6,9 @@ class Account < ApplicationRecord
 
   #association
   has_many :posts
+
+  #method to reuse
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

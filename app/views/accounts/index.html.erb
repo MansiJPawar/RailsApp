@@ -1,11 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-    <!-- loop posts -->
-    <% @posts.each do |post| %> 
-    <div><%= @post.account.username %></div>
-    <%= image_tag post.image.url, class: "img img-fluid" %>
-    <% end %>
+      <!-- loop posts -->
+      <% @posts.each do |post| %>
+        <div class="insta-post">
+          <div class="post-meta">
+            <%= post.account.username %>
+          </div>
+    
+          <%= image_tag post.image.url, class: "img img-fluid" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <div class="account-summary">
+        <%= current_account.username %><br/>
+        <!-- created method in model account.rb -->
+        <%= current_account.full_name %>
+      </div>
     </div>
   </div>
 </div>
