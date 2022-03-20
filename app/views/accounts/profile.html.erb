@@ -2,15 +2,33 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
+     <!-- profile image -->
+     <%= image_tag @account.image_url, width: "200px", class:"profile-pic" %>
     </div>
     <div class="col-8 text-left">
       <h1><%= current_account.full_name %></h1>
       <!-- link to edit profile -->
       <%= link_to 'Edit Profile',edit_account_registration_path, class: "btn btn-secondary" %>
       <!-- count values of post followers/following -->
-      <h1><%= current_account.posts.count %>Posts</h1>
-      <h1><%= current_account.total_followers %>Followers</h1>
-      <h1><%= current_account.following %>Following</h1>
+      <div class="profile-stats"><%= current_account.posts.count %>Posts</div>
+      <div class="profile-stats"><%= current_account.total_followers %>Followers</div>
+      <div class="profile-stats"><%= current_account.following %>Following</div>
+      <!-- insta profile bio -->
+      <p><%= @account.full_name %></p>
+      <!-- simple_format for multiline -->
+      <p><%= simple_format @account.description %></p>
+      <p><%= link_to @account.website if @account.website.present? %></p>
     </div>
   </div>
+    <!-- layout for post on profile  -->
+    <div class="row">
+      <% @posts.each do |post| %>
+        <!-- loop posts -->
+        <div class="col-4">
+        <div class="insta-post">
+            <%= image_tag post.image.url, class: "img img-fluid" %>
+        </div>
+        </div>
+      <% end %>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
 #action to authenticate user #here my model name is account
   before_action :authenticate_account!  
-  before_action :set_account, only: [:show]
+  before_action :set_account, only: [:profile]
 
   def index
     #user dashboard - post feed
@@ -12,6 +12,7 @@ class AccountsController < ApplicationController
   #show method renamed to profile 
   def profile
     #user profile
+    @posts = @account.posts.active
   end
 
   #method to load profile for user

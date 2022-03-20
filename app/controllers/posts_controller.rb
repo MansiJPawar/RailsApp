@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+  before_action :authenticate_account!   
   #to create new post
   def new
     @post = Post.new
@@ -29,5 +29,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:image, :image_cache)
   end
-
 end

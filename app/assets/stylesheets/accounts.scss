@@ -18,3 +18,15 @@ account-summary{
   border: 1px solid #ddd;
   border-radius: 3px;
 }
+
+.profile-pic {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+}
+
+.profile-stats {
+  width: 120px;
+  float: left;
+}
