@@ -21,13 +21,13 @@
     </div>
   </div>
     <!-- layout for post on profile  -->
-    <div class="row">
+    <div class="row profile-posts">
       <% @posts.each do |post| %>
         <!-- loop posts -->
         <div class="col-4">
-        <div class="insta-post">
+          <div class="insta-post">
             <%= image_tag post.image.url, class: "img img-fluid" %>
-        </div>
+          </div>
         </div>
       <% end %>
     </div>
