@@ -1,0 +1,16 @@
+<!-- #basic user info -->
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col-8 text-left">
+      <h1><%= current_account.full_name %></h1>
+      <!-- link to edit profile -->
+      <%= link_to 'Edit Profile',edit_account_registration_path, class: "btn btn-secondary" %>
+      <!-- count values of post followers/following -->
+      <h1><%= current_account.posts.count %>Posts</h1>
+      <h1><%= current_account.total_followers %>Followers</h1>
+      <h1><%= current_account.following %>Following</h1>
+    </div>
+  </div>
+</div>
