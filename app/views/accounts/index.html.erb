@@ -11,16 +11,28 @@
           </div>
           <%= image_tag post.image.url, class: "img img-fluid" %>
           <div class="post-details">
+            
+            <p><strong><%= post.total_likes %>Likes</strong></p>
+            <p><strong><%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %><%= simple_format post.description %></strong>
+            
             <%= simple_format post.description %>
+            <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
+           
           </div>
         </div>
       <% end %>
     </div>
     <div class="col-4">
-      <div class="account-summary">
-        <p><strong><%= current_account.username %></strong><br/>
-        <!-- created method in model account.rb -->
-        <%= current_account.full_name %></p>
+      <div class="account-summary">        
+        <p>
+          <!-- add profile image and username to right section of profile dashboard -->
+          <%= link_to image_tag(current_account.image.thumb.url, class:"img-circle"), profile_path(current_account.username) if current_account.image.present? %>
+          <strong><%= current_account.username %></strong><br/>
+        </p>
+          <!-- full_name created method in model account.rb -->
+        <p>
+        <%= current_account.full_name %>
+        </p>
       </div>
       <div class="follower-suggestions">
         
