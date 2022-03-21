@@ -18,11 +18,11 @@ class Account < ApplicationRecord
 
   #method to reuse for count total_followers
   def total_followers
-    0
+    Follower.where(follower_id: self.id).count
   end
 
   #method to reuse for count following
   def following
-    0
+    Follower.where(following_id: self.id).count
   end
 end
