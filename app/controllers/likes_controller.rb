@@ -24,6 +24,9 @@ class LikesController < ApplicationController
           else
             @success = false
           end
+          #get like and set value
+          @post_likes = Post.find(@post_id).total_likes_count
+          
           render "posts/like"
         }   
     end
