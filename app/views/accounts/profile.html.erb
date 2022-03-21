@@ -3,16 +3,26 @@
   <div class="row">
     <div class="col-4">
      <!-- profile image -->
-     <%= image_tag @account.image_url, width: "200px", class:"profile-pic" %>
+     <%= profile_picture @account, 200 %>
     </div>
     <div class="col-8 text-left">
       <h1><%= current_account.full_name %></h1>
-      <!-- link to edit profile -->
-      <%= link_to 'Edit Profile',edit_account_registration_path, class: "btn btn-secondary" %>
+      <!-- link to edit profile , if can_edit_profile? only the logged in user can edit his own profile-->
+      <%= link_to 'Edit Profile',edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id) %>
+     
       <!-- count values of post followers/following -->
-      <div class="profile-stats"><%= current_account.posts.count %>Posts</div>
-      <div class="profile-stats"><%= current_account.total_followers %>Followers</div>
-      <div class="profile-stats"><%= current_account.following %>Following</div>
+      <div class="row profile-stats">
+        <div class="col-4">
+          <%= current_account.posts.count %>Posts
+        </div>
+        <div class="col-4">
+          <%= current_account.total_followers %>Followers
+        </div>
+        <div class="col-4">
+          <%= current_account.following %>Following
+        </div>
+      </div>
+      
       <!-- insta profile bio -->
       <p><%= @account.full_name %></p>
       <!-- simple_format for multiline -->
