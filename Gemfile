@@ -80,3 +80,5 @@ gem 'carrierwave', "0.10.0"
 
 #goes well with carrier wave and lets use s3 bucket
 gem 'fog', '~> 1.37.0'
+
+gem "font-awesome-rails"

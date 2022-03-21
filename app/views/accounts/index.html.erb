@@ -10,7 +10,13 @@
             <%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
           </div>
           <%= image_tag post.image.url, class: "img img-fluid" %>
+       
           <div class="post-details">
+            <!-- to hold like and comment buttons -->
+            <div class="post-actions">
+              <i class="fa fa-heart like-<%= post.id %><%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
+              <i class="fa fa-comment fa-2x post-comment"></i>
+            </div>
             
             <p><strong><%= post.total_likes %>Likes</strong></p>
             <p><strong><%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %><%= simple_format post.description %></strong>
@@ -35,7 +41,8 @@
         </p>
       </div>
       <div class="follower-suggestions">
-        
+        <%= link_to 'View All','#',class:"float-right text-dark" %>
+        <p class="text-muted">Suggestions for you</p>
       </div>
     </div>
   </div>

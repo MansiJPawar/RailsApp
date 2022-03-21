@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   
   #association
   belongs_to :account
+  has_many :likes
   
   #before create post set active 
   before_create :set_active

@@ -9,6 +9,7 @@ class Account < ApplicationRecord
 
   #association
   has_many :posts
+  has_many :likes
 
   #method to reuse
   def full_name

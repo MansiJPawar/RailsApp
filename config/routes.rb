@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   
   #profile url
   get "profile/:username" => "accounts#profile", as: :profile #add name to profile for navigation
+  #used when like generated on ajax call
+  get "post/like/:post_id" => "likes#save_like", as: :like_post 
 
   resources :posts, only: [:new,:create,:show]
 
