@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "follow/account" => "accounts#follow_account", as: :follow_account
 
   resources :posts, only: [:new,:create,:show]
+  #comments
+  resources :comments, only: [:create]
 
   #route defined as 'controllername#methodname'
   root to: "public#homepage"

@@ -7,11 +7,14 @@ class AccountsController < ApplicationController
     #user dashboard - post feed
     #create instance and load post
     @posts = Post.active
+    #comment
+    @comment = Comment.new
     #user following ids
     following_ids = Follower.where(follower_id: current_account.id).map(&:following_id)
     following_ids << current_account.id
     #populate user at suggestions
     @follower_suggestions = Account.where.not(id: following_ids)
+  
   end
 
   #show method renamed to profile 
