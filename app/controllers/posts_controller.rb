@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
-  before_action :authenticate_account!   
+  before_action :authenticate_account!
+  #to load post on only show view
+  before_action :set_post,only: [:show] 
+  
   #to create new post
   def new
     @post = Post.new
@@ -21,9 +24,16 @@ class PostsController < ApplicationController
   end
 
   def show  
+    #set comment on show view
+    @comment =  Comment.new
   end
 
-  private 
+  private
+
+  #load post for viewing #check param exist before post load
+  def set_post
+    @post = Post.find(params[:id]) if params[:id].present?
+  end
 
   #strong params
   def post_params
