@@ -4,12 +4,15 @@
     <div class="col-4">
      <!-- profile image -->
      <%= profile_picture @account, 200 %>
-    </div>
+    </div> 
     <div class="col-8 text-left">
-      <h1><%= current_account.full_name %></h1>
-      <!-- link to edit profile , if can_edit_profile? only the logged in user can edit his own profile-->
-      <%= link_to 'Edit Profile',edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id) %>
-     
+     <div class="row">
+       <div class="col-6">
+          <!-- link to edit profile , if can_edit_profile? only the logged in user can edit his own profile|| custom bootstrap style-->
+          <%= link_to 'Edit Profile',edit_account_registration_path, class: "btn btn-muted btn-custom float-right" if can_edit_profile?(@account.id) %>
+          <h1><%= current_account.full_name %></h1>
+       </div>
+     </div>
       <!-- count values of post followers/following -->
       <div class="row profile-stats">
         <div class="col-4">

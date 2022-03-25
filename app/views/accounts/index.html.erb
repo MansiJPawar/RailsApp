@@ -42,14 +42,12 @@
     </div>
     <div class="col-4">
       <div class="account-summary">        
-        <p>
+        <p class="m-8">
           <!-- add profile image and username to right section of profile dashboard -->
-          <%= link_to image_tag(current_account.image.thumb.url, class:"img-circle"), profile_path(current_account.username) if current_account.image.present? %>
+          <%= link_to image_tag(current_account.image.thumb.url, class:"img-circle float-left m-r-15"), profile_path(current_account.username) if current_account.image.present? %>
           <strong><%= current_account.username %></strong><br/>
-        </p>
           <!-- full_name created method in model account.rb -->
-        <p>
-        <%= current_account.full_name %>
+          <%= current_account.full_name %>
         </p>
       </div>
       <div class="follower-suggestions">
