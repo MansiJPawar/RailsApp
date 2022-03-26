@@ -26,12 +26,15 @@ class PostsController < ApplicationController
   def show  
     #set comment on show view
     @comment =  Comment.new
+    #include method no need to make query while we loop comment section just pass postid
+    @comments = Comment.includes(:account).where(post_id: @post.id)
   end
 
   private
 
   #load post for viewing #check param exist before post load
   def set_post
+    #include methods used to connect all our fields(comments and account)
     @post = Post.find(params[:id]) if params[:id].present?
   end
 

@@ -38,8 +38,16 @@
       <% @posts.each do |post| %>
         <!-- loop posts -->
         <div class="col-4">
-          <div class="insta-post">
-            <%= image_tag post.image.url, class: "img img-fluid" %>
+          <div class="insta-post post-square" style="background-color: url(<%= post.image.url %>) no-repeat center top">
+            <!-- every post on myprofile redirects to show page of post with comment -->
+            <%= link_to post_path(post) do %> 
+            <div class="post-stats">
+              <div class="inner">
+                <i class="fa fa-heart"></i><%= post.total_likes_count %> 
+                <i class="fa fa-comment m-1-15"></i><%= post.total_comments_count %>
+              </div>
+            </div>
+            <% end %>
           </div>
         </div>
       <% end %>

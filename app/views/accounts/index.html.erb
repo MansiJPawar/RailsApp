@@ -29,7 +29,8 @@
             <%= simple_format post.description %>
             <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
             <!-- comments partial || locals pass post as var -->
-            <%= render "posts/comments" , post: post %>
+            <!-- include method used  -->
+            <%= render "posts/comments" , post: post , comments: Comment.includes(:account).where(post_id: post.id) %>
           </div>
           
           <!-- comment section field to post -->

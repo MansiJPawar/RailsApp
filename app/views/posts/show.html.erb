@@ -19,14 +19,14 @@
               <%= simple_format @post.description %>
               
               <!-- comments partial || locals pass post as var -->
-              <%= render "posts/comments" , post: @post %>
-            </div>
+              <%= render "posts/comments" , post: @post, comments: @comments %>
+              </div>
 
                 <!-- to hold like and comment buttons -->
                 <div class="post-actions">
                     <i class="fa fa-heart like-<%= @post.id %><%= 'active' if post_liked_by_user?(@post.id) %> fa-2x post-like" data-id="<%= @post.id %>"></i>
                     <i class="fa fa-comment fa-2x post-comment" id="post-comment"></i>
-                  </div>
+                </div>
                   
                   <p><strong id="post-<%= @post.id %>-likes"><%= @post.total_likes_count %>Likes</strong></p>
                   
@@ -38,6 +38,9 @@
           <div class="comment-box">
             <%= form_for @comment do |f| %>
               <%= f.hidden_field :post_id, value: @post.id %>
+              <!-- field only for show , return user back to post -->
+              <%= f.hidden_field :return_to, value: "post" %>
+              
               <!-- allow user to enter comment -->
               <%= f.text_field :comment, placeholder:"Add comment here...", class:"form-control post-comment" %>
               <%= f.submit "Post", class: "btn btn-success float-right" %>
