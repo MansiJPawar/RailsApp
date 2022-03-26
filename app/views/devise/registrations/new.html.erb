@@ -1,11 +1,9 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :username %>
-    <%= f.text_field :username, autofocus: true, autofocus: "email" %>
+    <%= f.text_field :username, autofocus: true, autofocus: "username" %>
   </div>
     
   <div class="field">
@@ -35,11 +33,170 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  </div> -->
 
-  <div class="actions">
+  <!-- <div class="actions">
     <%= f.submit "Sign up" %>
+  </div> -->
+
+
+
+  <div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  
+  <body>
+    <div class="login-page">
+      <div class="login-container">
+        <h1>
+          <img
+            class="instagram-title"
+            alt="instagram title logo"
+            src="https://i.imgur.com/wvLiKam.png"
+          />
+        </h1>
+        <form class="login-form">
+      
+          <div class="username-info">
+            <%= f.label :username %><br />
+            <label for="username">
+              <%= f.text_field :username, autofocus: true, autofocus: "username" %>
+            </label>
+          </div>
+
+          <div class="username-info">
+            <%= f.label :first_name %><br />
+            <label for="username">
+              <%= f.text_field :first_name %>
+            </label>
+          </div>
+
+          <div class="username-info">
+            <%= f.label :last_name %><br />
+            <label for="username">
+              <%= f.text_field :last_name %>
+            </label>
+          </div>
+
+          <div class="username-info">
+            <%= f.label :email %><br />
+            <label for="username">
+              <%= f.email_field :email, autocomplete: 'email' %>
+            </label>
+          </div>
+
+          <div class="password-info">
+            <label for="password">
+              <%= f.label :password %><br/>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </label>
+          </div>
+
+          <div class="username-info">
+            <%= f.label :password_confirmation %><br />
+            <label for="username">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </label>
+          </div>
+  
+          <div class="actions">
+            <%= f.submit "Sign up", class:"login-btn btn-block login" %>
+          </div>
+  
+          <div class="or-divider">
+            <span class="or-text">OR</span>
+          </div>
+  
+          <div class="facebook-login">
+            <a href="https://www.facebook.com/">
+              <img
+                src="https://img.icons8.com/fluency/48/000000/facebook.png"
+                class="facebook-icon"
+              />
+            </a>
+            <a href="https://www.facebook.com/" class="login-with-fb"
+              >Log in with Facebook
+            </a>
+          </div>
+  
+        </form>
+      </div>
+
+      <div class="sign-up-container">
+        <p>Have an account?
+          <%- if controller_name != 'sessions' %>
+          <%= link_to "Log in", new_session_path(resource_name) %><br />
+        <% end %></p>
+     </div>
+
+      </div>
+    </div>
+  
+    <div class="cta-app">Get the app.</div>
+    <div class="cta-container">
+      <div class="app-store-logo">
+        <a href="https://apps.apple.com/app/instagram/id389801252?vt=lo">
+          <img
+            src="https://i.imgur.com/lREV6Qa.png"
+            alt="download on the app store logo"
+            class="apple-app-store"
+          />
+        </a>
+      </div>
+      <div class="app-store-logo">
+        <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3DXRR9_gALAAHKOzMSO3MkAOZ0JJtC%26utm_content%3Dlo%26utm_medium%3Dbadge"">
+          <img
+          src="https://i.imgur.com/DFQNKXK.png"
+          alt="get it on google play logo"
+          class="google-play"
+          />
+        </a>
+      </div>
+    </div>
+  
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="links">
+          <nav class="nav-links">
+            <li><a class="footer-link" href="#">Meta</a></li>
+            <li><a class="footer-link" href="#">About</a></li>
+            <li><a class="footer-link" href="#">Blog</a></li>
+            <li><a class="footer-link" href="#">Jobs</a></li>
+            <li><a class="footer-link" href="#">Help</a></li>
+            <li><a class="footer-link" href="#">API</a></li>
+            <li><a class="footer-link" href="#">Privacy</a></li>
+            <li><a class="footer-link" href="#">Terms</a></li>
+            <li><a class="footer-link" href="#">Top Accounts</a></li>
+            <li><a class="footer-link" href="#">Hashtags</a></li>
+            <li><a class="footer-link" href="#">Locations</a></li>
+            <li><a class="footer-link" href="#">Instagram Lite</a></li>
+          </nav>
+        </div>
+        <div class="copyright-section">
+          <label for="language-select"></label>
+          <select id="language-select">
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Italian">Italiano</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Tagalog">Tagalog</option>
+          </select>
+          <p>&copy; <span class="year">2021</span> Instagram log in copycat</p>
+          <p>Developed by Ryan Delos Santos</p>
+        </div>
+      </div>
+    </footer>
+  </body>
   </div>
+  
 <% end %>
 
 <%= render "devise/shared/links" %>
+

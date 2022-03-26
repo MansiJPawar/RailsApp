@@ -72,8 +72,19 @@
               <hr class="hr-light my-4 w-75">
               <h4 class="subtext-header mt-2 mb-4">Grace is the beauty of form under the influence of freedom</h4>
               <p class="animate-character"> EXPLORE NOW ! </p>
-                <p><%= link_to 'SignUp', new_account_registration_path, class:"btn btn-outline-light" %>
-                    <%= link_to 'SignIn', new_account_session_path, class:"btn btn-outline-light" %></p>  
+
+              
+              <% if current_account %>
+              <p>
+                <%= link_to "Sign Out", destroy_account_session_path, method: :delete, class:"btn btn-outline-light" %>
+              </p>
+              <% else %>    
+              <p>
+                <%= link_to 'SignUp', new_account_registration_path, class:"btn btn-outline-light" %>
+                <%= link_to 'SignIn', new_account_session_path, class:"btn btn-outline-light" %>
+              </p>  
+              <% end %>
+            
             </div>
             <!--Grid column-->
           </div>

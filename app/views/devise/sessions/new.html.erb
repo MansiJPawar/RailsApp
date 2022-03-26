@@ -1,26 +1,136 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<div>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<body>
+  <div class="login-page">
+    <div class="login-container">
+      <h1>
+        <img
+          class="instagram-title"
+          alt="instagram title logo"
+          src="https://i.imgur.com/wvLiKam.png"
+        />
+      </h1>
+      <form class="login-form">
+        <div class="username-info">
+          <label for="username">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </label>
+        </div>
+        <div class="password-info">
+          <label for="password">
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </label>
+        </div>
+
+        <div>
+          <%= f.submit "Log in", class:"login-btn btn-block login" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+        <% end %>
+
+        <div class="or-divider">
+          <span class="or-text">OR</span>
+        </div>
+
+        <div class="facebook-login">
+          <a href="https://www.facebook.com/">
+            <img
+              src="https://img.icons8.com/fluency/48/000000/facebook.png"
+              class="facebook-icon"
+            />
+          </a>
+          <a href="https://www.facebook.com/" class="login-with-fb"
+            >Log in with Facebook
+          </a>
+        </div>
+
+        <a class="forgot-text" href="#"><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        <% end %>
+        </a>
+      </form>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="sign-up-container">
+      <div class="new-user">
+        Don't have an account? <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+      <% end %>
+      
+      </div>
+    </div>
   </div>
+
+  <div class="cta-app">Get the app.</div>
+  <div class="cta-container">
+    <div class="app-store-logo">
+      <a href="https://apps.apple.com/app/instagram/id389801252?vt=lo">
+        <img
+          src="https://i.imgur.com/lREV6Qa.png"
+          alt="download on the app store logo"
+          class="apple-app-store"
+        />
+      </a>
+    </div>
+    <div class="app-store-logo">
+      <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3DXRR9_gALAAHKOzMSO3MkAOZ0JJtC%26utm_content%3Dlo%26utm_medium%3Dbadge"">
+        <img
+        src="https://i.imgur.com/DFQNKXK.png"
+        alt="get it on google play logo"
+        class="google-play"
+        />
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="links">
+        <nav class="nav-links">
+          <li><a class="footer-link" href="#">Meta</a></li>
+          <li><a class="footer-link" href="#">About</a></li>
+          <li><a class="footer-link" href="#">Blog</a></li>
+          <li><a class="footer-link" href="#">Jobs</a></li>
+          <li><a class="footer-link" href="#">Help</a></li>
+          <li><a class="footer-link" href="#">API</a></li>
+          <li><a class="footer-link" href="#">Privacy</a></li>
+          <li><a class="footer-link" href="#">Terms</a></li>
+          <li><a class="footer-link" href="#">Top Accounts</a></li>
+          <li><a class="footer-link" href="#">Hashtags</a></li>
+          <li><a class="footer-link" href="#">Locations</a></li>
+          <li><a class="footer-link" href="#">Instagram Lite</a></li>
+        </nav>
+      </div>
+      <div class="copyright-section">
+        <label for="language-select"></label>
+        <select id="language-select">
+          <option value="English">English</option>
+          <option value="French">French</option>
+          <option value="Italian">Italiano</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Tagalog">Tagalog</option>
+        </select>
+        <p>&copy; <span class="year">2021</span> Instagram log in copycat</p>
+        <p>Developed by Ryan Delos Santos</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+
