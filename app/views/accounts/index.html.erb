@@ -3,17 +3,17 @@
     <div class="col-8">
       <!-- loop posts -->
       <% @posts.each do |post| %>
-        <div class="insta-post">
-          <div class="post-meta">
+        <div class="insta-post-account card">
+          <div class="post-meta-account">
             <%= link_to image_tag(post.account.image.thumb.url, class:"img-circle"), profile_path(post.account.username) %>
             <!-- link to username redirect to user profile -->
             <%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
           </div>
           <%= image_tag post.image.url, class: "img img-fluid" %>
        
-          <div class="post-details">
+          <div class="post-details-account">
             <!-- to hold like and comment buttons -->
-            <div class="post-actions">
+            <div class="post-actions-account">
               <i class="fa fa-heart like-<%= post.id %><%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
               
               <!-- comment onclick go to show view -->
@@ -22,27 +22,31 @@
               <i class="fa fa-comment fa-2x post-comment"></i>
               <% end %>
             </div>
+            <div class="followers-comment">
+              <p><strong id="post-<%= post.id %>-likes"><%= post.total_likes_count %>Likes</strong></p>
+              <p><strong id="post-<%= post.id %>-comments"><%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %><%= simple_format post.description %></strong>
+              
+              <%= simple_format post.description %>
+              <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
             
-            <p><strong id="post-<%= post.id %>-likes"><%= post.total_likes_count %>Likes</strong></p>
-            <p><strong id="post-<%= post.id %>-comments"><%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %><%= simple_format post.description %></strong>
-            
-            <%= simple_format post.description %>
-            <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
+        
             <!-- comments partial || locals pass post as var -->
             <!-- include method used  -->
             <%= render "posts/comments" , post: post , comments: Comment.includes(:account).where(post_id: post.id) %>
           </div>
+        </div>
           
           <!-- comment section field to post -->
-          <div class="comment-box">
+          <!-- <div class="comment-box-account"> -->
             <%= form_for @comment do |f| %>
               <%= f.hidden_field :post_id, value: post.id %>
-              <!-- allow user to enter comment -->
-              <%= f.text_field :comment, placeholder:"Add comment here...", class:"form-control post-comment" %>
-              <%= f.submit "Post", class: "btn btn-success float-right" %>
-            
+              <div class="container comment-box-account">
+                <!-- allow user to enter comment -->
+                <%= f.text_field :comment, placeholder:"Add comment here...", class:"form-control post-comment" %>
+                <%= f.submit "Post", class: "btn btn-success btn-sm float-right comment-post" %>
+              </div>
             <% end %>
-          </div>
+          <!-- </div> -->
         </div>
       <% end %>
     </div>
@@ -53,7 +57,7 @@
           <%= link_to image_tag(current_account.image.thumb.url, class:"img-circle float-left m-r-15"), profile_path(current_account.username) if current_account.image.present? %>
           <strong><%= current_account.username %></strong><br/>
           <!-- full_name created method in model account.rb -->
-          <%= current_account.full_name %>
+          <!-- <%= current_account.full_name %> -->
         </p>
       </div>
       <div class="follower-suggestions">

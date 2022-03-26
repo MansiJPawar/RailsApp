@@ -17,6 +17,20 @@ account-summary{
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 3px;
+  margin-top: 30px;
+  box-shadow:
+  0 2.8px 2.2px rgba(231, 225, 225, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+  border: 1px solid rgba(201, 199, 199, 0.15);
+}
+
+.col-4{
+  margin-top: 30px;
 }
 
 .profile-pic {
@@ -36,6 +50,69 @@ account-summary{
   margin-top: 50px;
 }
 
+.insta-post-account{
+  margin: 20px;
+  /* box-shadow: 0 25px 45px rgba(2, 2, 2, 0.1); */
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+  border: 1px solid rgba(201, 199, 199, 0.15);
+}
+
+.post-meta-account {
+  // background: #fff;
+  //text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  img {
+    // margin-right: 5px;
+    height: 40px;
+    width: 48px;
+    margin-left: 20px;
+    // margin-bottom: 10px;
+  }
+}
+
+.post-actions-account {
+  margin-top: 20px;
+  i {
+    margin-right: 10px;
+    color: #ddd;
+    cursor: pointer;
+  }
+  
+  i:hover {
+    color: #999;
+  }
+
+  i.active {
+    color: rgb(214, 24, 24);
+  }
+}
+
+.comment-box-accounts {
+  margin: 5px;
+  // background: #fff;
+  // border: 1px solid #ddd; 
+  // overflow: scroll; 
+  // height: 200px;
+}
+
+.comment-post{
+  margin: 5px;
+}
+
+.followers-comment {
+  height: 100px;
+  overflow: scroll;
+  margin-left: 10px;
+}
+
 .img-circle {
   border-radius: 50%;
 }
@@ -53,10 +130,19 @@ account-summary{
 
 .m-r-15 {
   margin-right: 15px;
+  height: 40px;
+  width: 48px;
+  //margin: 10px;
+  
+  // img {
+  //   height: 40px;
+  //   width: 48px;
+  // }
 }
 
 .m-r-10 {
   margin-right: 10px;
+  width: 40px;
 }
 
 .m-l-15 {
