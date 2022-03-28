@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
   # allows pass value for return_to field but not save db
   attr_accessor :return_to
 
-  # to update like counts on post
+  # to update like counts on post #callbacks
   after_create :increase_post_comment_counter
 
   after_destroy :decrease_post_comment_counter

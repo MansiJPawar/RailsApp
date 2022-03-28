@@ -6,7 +6,7 @@ class Like < ApplicationRecord
   #validations#same user cant like same post multiple times
   validates_uniqueness_of :post_id, scope: :account_id
 
-  # to update like counts on post
+  # to update like counts on post #callbacks
   after_create :increase_post_like_counter
 
   after_destroy :decrease_post_like_counter
