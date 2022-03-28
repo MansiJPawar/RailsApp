@@ -3,6 +3,15 @@ class PostsController < ApplicationController
   #to load post on only show view
   before_action :set_post,only: [:show] 
   
+  # def index
+  # #filter for tag
+  #   if params[:tag]
+  #     @posts = Post.tagged_with(params[:tag])
+  #   else
+  #     @posts = Post.all
+  #   end
+  # end
+  
   #to create new post
   def new
     @post = Post.new
@@ -40,6 +49,6 @@ class PostsController < ApplicationController
 
   #strong params
   def post_params
-    params.require(:post).permit(:image, :image_cache, :description)
+    params.require(:post).permit(:image, :image_cache, :description, :tag_list)
   end
 end

@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post "follow/account" => "accounts#follow_account", as: :follow_account
 
   resources :posts, only: [:new,:create,:show]
+  
+  #tag 
+  get 'tags/:tag', to: 'article#index', as: :tag
+  
   #comments
   resources :comments, only: [:create]
 

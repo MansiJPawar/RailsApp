@@ -9,6 +9,9 @@ class Post < ApplicationRecord
   belongs_to :account
   has_many :likes
   has_many :comments
+
+  #taggable
+  acts_as_taggable_on :tags
   
   #before create post set active 
   before_create :set_active

@@ -4,7 +4,11 @@ class AccountsController < ApplicationController
   before_action :set_account, only: [:profile]
 
   def index 
-    #user dashboard - post feed
+    #user dashboard feed 
+    follower_ids = Follower.where(follower_id: current_account.id).map(&:following_id)
+    follower_ids << current_account.id
+    
+      #user dashboard - post feed
     #create instance and load post
     #@posts = Post.active
     @posts = Post.includes(:account).where(account_id: follower_ids).active

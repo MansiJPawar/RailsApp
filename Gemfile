@@ -86,3 +86,6 @@ gem "font-awesome-rails"
 
 #debugg
 gem 'pry'
+
+#tag for hastag
+gem 'acts-as-taggable-on'
