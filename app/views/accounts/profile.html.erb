@@ -27,7 +27,6 @@
       </div>
       
       <!-- insta profile bio -->
-      <p><%= @account.full_name %></p>
       <!-- simple_format for multiline -->
       <p><%= simple_format @account.description %></p>
       <p><%= link_to @account.website if @account.website.present? %></p>
