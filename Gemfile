@@ -82,3 +82,5 @@ gem 'carrierwave', "0.10.0"
 gem 'fog', '~> 1.37.0'
 
 gem "font-awesome-rails"
+
+gem 'pry'
