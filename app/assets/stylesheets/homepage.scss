@@ -5,11 +5,6 @@ header,
   height: 100%;
 }
 
-// .nav-tab {
-//   height: 80px;
-//   font-size: large;
-// }
-
 @media (max-width: 740px) {
   html,
   body,
@@ -55,20 +50,6 @@ header,
     background-position: 200% center;
   }
 }
-
-// .top-nav-collapse {
-//   background-color: #563e91 !important;
-// }
-
-// .navbar:not(.top-nav-collapse) {
-//   background: transparent !important;
-// }
-
-// @media (max-width: 991px) {
-//   .navbar:not(.top-nav-collapse) {
-//     background: #563e91 !important;
-//   }
-// }
 
 .rgba-gradient {
   background: -moz-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
