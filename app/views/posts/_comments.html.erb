@@ -2,7 +2,7 @@
 <% comments.each do |comment| %>
  <div class="comment">
    <!-- profile pic to each comment -->
-   <%= link_to profile_picture(comment.account,27),profile_path(comment.account.username)%>
+   <%= link_to profile_picture(comment.account), profile_path(comment.account.username)%>
    <!-- display username of account  -->
    <strong><%= link_to comment.account.username, profile_path(comment.account.username), class:"text-dark" %></strong>
    <%= comment.comment %>

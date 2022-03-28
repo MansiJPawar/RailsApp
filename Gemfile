@@ -89,3 +89,9 @@ gem 'pry'
 
 #tag for hastag
 gem 'acts-as-taggable-on'
+
+#social logins
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+
+#omniauth protection
+gem "omniauth-rails_csrf_protection"

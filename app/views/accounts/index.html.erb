@@ -28,15 +28,15 @@
      
               <%= simple_format post.description %>
               <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
-            
-        
-              <!-- comments partial || locals pass post as var -->
-              <!-- include method used  -->
-              <%= render "posts/comments" , post: post , comments: Comment.includes(:account).where(post_id: post.id) %>
               <!-- raw method to avoid escape html, hashtag for post using taggable #map to link the tag#join links with comma space-->
               <p>
                 <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join('. ') %>
               </p>
+            
+              <!-- comments partial || locals pass post as var -->
+              <!-- include method used  -->
+              <%= render "posts/comments" , post: post , comments: Comment.includes(:account).where(post_id: post.id) %>
+          
           </div>
         </div>
           

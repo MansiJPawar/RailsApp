@@ -2,7 +2,24 @@ class Account < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:github]
+
+  #omniauth for github social login
+  def self.from_omniauth(access_token)
+    #if user exit login 
+    data = access_token.info
+    account = Account.where(email: data['email']).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    #user not logged in then create
+    unless account
+      account = Account.create(
+        email: data['email'],
+        password: Devise.friendly_token[0,20]
+      )
+    end
+    account
+  end
 
   #carrier wave for image upload
   mount_uploader :image, ImageUploader 
