@@ -33,18 +33,18 @@
         </div>
           
         <!-- comment section field to post -->
-        <!-- <div class="comment-box"> -->
             <%= form_for @comment do |f| %>
               <%= f.hidden_field :post_id, value: @post.id %>
               <!-- field only for show , return user back to post -->
               <%= f.hidden_field :return_to, value: "post" %>
               
               <!-- allow user to enter comment -->
-              <!-- <div class="container-comment"> -->
-                <div class="comment-here"><%= f.text_field :comment, placeholder:"Add comment here...", class:"form-control" %></div>
-                <div class="post-comment"><%= f.submit "Post", class: "btn btn-primary btn-sm float-right" %></div>
-              <!-- </div> -->
-            
+                <div class="comment-here">
+                  <%= f.text_field :comment, placeholder:"Add comment here...", class:"form-control" %>
+                </div>
+                <div class="post-comment">
+                  <%= f.submit "Post", class: "btn btn-primary btn-sm float-right" %>
+                </div>
             <% end %>
         <!-- </div> -->
         </div>

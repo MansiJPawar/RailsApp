@@ -9,13 +9,13 @@
             <!-- link to username redirect to user profile -->
             <%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
           </div>
-          <%= image_tag post.image.url, class: "img img-fluid" %>
+            
+            <%= image_tag post.image.url, class: "img img-fluid" %>
        
           <div class="post-details-account">
             <!-- to hold like and comment buttons -->
             <div class="post-actions-account">
               <i class="fa fa-heart like-<%= post.id %><%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
-              
               <!-- comment onclick go to show view -->
               <!-- link tag as block -->
               <%= link_to post_path(post.id) do %>
@@ -25,28 +25,27 @@
             <div class="followers-comment">
               <p><strong id="post-<%= post.id %>-likes"><%= post.total_likes_count %>Likes</strong></p>
               <p><strong id="post-<%= post.id %>-comments"><%= link_to post.account.username, profile_path(post.account.username), class:"text-dark" %><%= simple_format post.description %></strong>
-              
+     
               <%= simple_format post.description %>
               <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
             
         
-            <!-- comments partial || locals pass post as var -->
-            <!-- include method used  -->
-            <%= render "posts/comments" , post: post , comments: Comment.includes(:account).where(post_id: post.id) %>
+              <!-- comments partial || locals pass post as var -->
+              <!-- include method used  -->
+              <%= render "posts/comments" , post: post , comments: Comment.includes(:account).where(post_id: post.id) %>
           </div>
         </div>
           
           <!-- comment section field to post -->
-          <!-- <div class="comment-box-account"> -->
             <%= form_for @comment do |f| %>
               <%= f.hidden_field :post_id, value: post.id %>
+             
               <div class="container comment-box-account">
                 <!-- allow user to enter comment -->
                 <%= f.text_field :comment, placeholder:"Add comment here...", class:"form-control post-comment" %>
                 <%= f.submit "Post", class: "btn btn-success btn-sm float-right comment-post" %>
               </div>
             <% end %>
-          <!-- </div> -->
         </div>
       <% end %>
     </div>
