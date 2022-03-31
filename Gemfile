@@ -69,3 +69,14 @@ gem 'jquery-rails'
 
 #devise for user login/register 
 gem "devise", "~> 4.8"
+
+#login
+gem 'omniauth'
+
+#social login 
+gem 'omniauth-facebook'
+
+#to store session
+gem 'activerecord-session_store'
+
+gem "omniauth-rails_csrf_protection"
