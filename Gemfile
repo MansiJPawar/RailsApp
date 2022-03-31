@@ -66,3 +66,6 @@ gem "annotate", "~> 3.2"
 
 #jquery
 gem 'jquery-rails'
+
+#devise for user login/register 
+gem "devise", "~> 4.8"
