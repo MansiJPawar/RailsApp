@@ -13,9 +13,13 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <p class="noticed"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        
-        <script src="" async defer></script>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %> 
+      
+      <script src="" async defer></script>
     </body>
 </html>
