@@ -9,14 +9,16 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
 #  gender                 :boolean
+#  image                  :text
 #  last_name              :string
+#  name                   :string
 #  phone_no               :bigint
 #  profile_image          :text
 #  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer          default("user")
+#  role                   :integer          default(0)
 #  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

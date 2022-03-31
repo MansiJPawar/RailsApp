@@ -80,3 +80,5 @@ gem 'omniauth-facebook'
 gem 'activerecord-session_store'
 
 gem "omniauth-rails_csrf_protection"
+
+gem "jquery-datatables", "~> 1.10"
