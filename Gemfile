@@ -76,8 +76,9 @@ gem 'omniauth'
 #social login 
 gem 'omniauth-facebook'
 
-#to store session
+#to store user session
 gem 'activerecord-session_store'
+
 
 gem "omniauth-rails_csrf_protection"
 

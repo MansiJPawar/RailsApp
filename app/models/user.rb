@@ -18,7 +18,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer          default(0)
+#  role                   :integer          default("user")
 #  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -53,24 +53,24 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     # data = access_token.info
-    user = User.where(email: access_token.info.email).first
+    @user = User.where(email: access_token.info.email).first
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-      user = User.create(
+      @user = User.create(
         email: access_token.info.email,
         password: Devise.friendly_token[0,20]
       )
     end
-    user.uid = access_token.uid
-    user.provider = access_token.provider
-    user.first_name = access_token.name
-    user.name = access_token.info.name
-    user.image = access_token.info.image
-    user.gender = access_token.info.gender
+    @user.uid = access_token.uid
+    @user.provider = access_token.provider
+    @user.first_name = access_token.name
+    @user.name = access_token.info.name
+    @user.image = access_token.info.image
+    @user.gender = access_token.info.gender
     # user.oauth_token = auth.credentials.token
     # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-    user.save
+    @user.save
 
-    user
+    @user
   end
 end

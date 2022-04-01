@@ -7,106 +7,78 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   </head>
-
-  <body>
-      <!--========== BOX ICONS ==========-->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
-  
     <body>
       <!--========== HEADER ==========-->
       <header class="header">
-          <div class="header__container">
-              
-              
-              <img src="<%= asset_url('perfil.jpg')%>"class="header__img">
+        <div class="header__container"> 
+          <img src="<%= asset_url('perfil.jpg')%>"class="header__img">
   
-              <a href="#" class="header__logo">Bedimcode</a>
-  
-
-              <div class="header__search">
-                  <input type="search" placeholder="Search" class="header__input">
-                  <i class='bx bx-search header__icon'></i>
-              </div>
+           <a href="#" class="header__logo">Bedimcode</a>
+            <div class="header__search">
+              <input type="search" placeholder="Search" class="header__input">
+              <i class='bx bx-search header__icon'></i>
+            </div>
                 
-              <!-- User conditions -->
-              <% if current_user %> 
-                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-              <% else %>
-                <%= link_to 'Sign in with Facebook', omniauth_authorize_path(User, :facebook), method: :post, data: {disable_with: "connecting..."} %>
-                <!-- <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> -->
-                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-                
-              <% end %>
+            <!-- User conditions -->
+            <% if current_user %> 
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to 'Sign in with Facebook', omniauth_authorize_path(User, :facebook), method: :post, data: {disable_with: "connecting..."} %>
+              <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+              <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+            <% end %>
 
-              <div class="header__toggle">
-                  <i class='bx bx-menu' id="header-toggle"></i>
-              </div>
+            <div class="header__toggle">
+              <i class='bx bx-menu' id="header-toggle"></i>
+            </div>
           </div>
       </header>
   
       <!--========== NAV ==========-->
       <div class="nav" id="navbar">
-          <nav class="nav__container">
-              <div>
-                  <a href="#" class="nav__link nav__logo">
-                      <i class='bx bxs-disc nav__icon' ></i>
-                      <span class="nav__logo-name">Bedimcode</span>
-                  </a>
+        <nav class="nav__container">
+          <div>
+            <a href="#" class="nav__link nav__logo">
+              <i class='bx bxs-disc nav__icon' ></i>
+              <span class="nav__logo-name">Bedimcode</span>
+            </a>
   
-                  <div class="nav__list">
-                      <div class="nav__items">
-                          <h3 class="nav__subtitle">Profile</h3>
+            <div class="nav__list">
+              <div class="nav__items">
+                <h3 class="nav__subtitle">Profile</h3>
+                  <!-- pages link  -->
+                   <a href="/", class="nav__link active" >
+                      <i class='bx bx-home nav__icon' ></i>
+                      <span class="nav__name">Home</span>
+                   </a>
+                          
+                    <div class="nav__dropdown">
+                      <a href="/profiles/index" class="nav__link">
+                        <i class='bx bx-user nav__icon' ></i>
+                        <span class="nav__name">Profile</span>
+                        <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                      </a>
 
-                          <!-- pages link  -->
-                          <a href="/", class="nav__link active" >
-                              <i class='bx bx-home nav__icon' ></i>
-                              <span class="nav__name">Home</span>
-                          </a>
-                          
-                          <div class="nav__dropdown">
-                              <a href="/profiles/index" class="nav__link">
-                                  <i class='bx bx-user nav__icon' ></i>
-                                  <span class="nav__name">Profile</span>
-                                  <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-                              </a>
-  
-                              <div class="nav__dropdown-collapse">
-                                  <div class="nav__dropdown-content">
-                                      <a href="/users/edit" class="nav__dropdown-item">Edit Profile</a>
-                                      <a href="/profiles/index" class="nav__dropdown-item">View</a>
-                                  </div>
-                              </div>
-                          </div>
-                          
-                          <i class='bx bx-message-rounded nav__icon' ></i>
-                          <%= link_to 'Userlist', shared_admin_path %>   
-                        
+                    <div class="nav__dropdown-collapse">
+                      <div class="nav__dropdown-content">
+                        <a href="/users/edit" class="nav__dropdown-item">Edit Profile</a>
+                        <a href="/profiles/index" class="nav__dropdown-item">View</a>
                       </div>
-  
-                
+                    </div>
                   </div>
+
+                 <% if current_user && current_user.superadmin? %>
+                  <%= link_to 'Userlist', shared_admin_path %>
+                <% end %>
               </div>
-          </nav>
+            </div>
+          </div>
+        </nav>
       </div>
-      
-      <%= yield %>
-  
-      <!--========== CONTENTS ==========-->
-      <!-- <main>
-          <section>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt vel illum fuga unde cum, voluptates magni molestias eveniet culpa autem ut, totam veniam, suscipit tempore ullam pariatur est at asperiores?</p>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt vel illum fuga unde cum, voluptates magni molestias eveniet culpa autem ut, totam veniam, suscipit tempore ullam pariatur est at asperiores?</p>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt vel illum fuga unde cum, voluptates magni molestias eveniet culpa autem ut, totam veniam, suscipit tempore ullam pariatur est at asperiores?</p>
-          </section>
-      </main> -->
-  
-      <!--========== MAIN JS ==========-->
-      <!-- <script src="assets/js/main.js"></script> -->
-  
+    <%= yield %>
   </body>
 </html>

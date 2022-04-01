@@ -4,7 +4,7 @@ $(document).ready(function(){
     lengthMenu: [5, 10, 15, 25, 50],
       ajax: {
         url: "/get_dataset",
-        dataSrc: 'users/omniauth_callbacks',
+        dataSrc: 'omniauth_callbacks',
         serverSide: true,
       },
       columns: [
