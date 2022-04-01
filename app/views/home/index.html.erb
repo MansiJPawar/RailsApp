@@ -13,9 +13,13 @@
 <%= current_user.uid %>
 3 <br>
 <%= current_user.provider %>
-4 <br>
-<%= current_user.image %>
-5 <br>
+<br> <br> MY IMAGE
+<%= image_tag current_user.image %>
+5 <br> <br>
 <%= current_user.gender %>
 
 </div>
+
+MY PROFILE FORM
+
+<%= render 'shared/admin' %>
