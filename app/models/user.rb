@@ -49,6 +49,8 @@ class User < ApplicationRecord
   #  user
   # end
 
+  enum role: [:user, :superadmin]
+
   def self.from_omniauth(access_token)
     # data = access_token.info
     user = User.where(email: access_token.info.email).first
