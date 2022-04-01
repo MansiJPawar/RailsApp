@@ -33,24 +33,28 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable,  :omniauthable, :omniauth_providers => [:facebook]
-         
-  # def self.from_omniauth(auth)
-  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-  #     user.email = auth.info.email
-  #     user.password = Devise.friendly_token[0,20]
-  #     name = auth.info.name.split(' ')
-  #     user.first_name =  name.first  # assuming the user model has a name
-  #     user.last_name =  name.last  # assuming the user model has a name
-  #     #user.image = auth.info.image # assuming the user model has an image
-  #     # If you are using confirmable and the provider(s) you use validate emails,
-  #     # uncomment the line below to skip the confirmation emails.
-  #     # user.skip_confirmation!
-  #   end
-  #  user
-  # end
-
+  
+  #enum roles
   enum role: [:user, :superadmin]
 
+  #latest user first
+  default_scope {order created_at: :desc}
+  
+  def username 
+    return self.email.split('@')[0].capitalize
+  end
+
+  #csv
+  def self.to_csv(fields = column_name, options = {})
+    CSV.generate(options) do |csv|
+      csv << fields
+      all.each do |business|
+        csv << user.attributes.values_at(*fields)
+      end
+    end
+  end
+
+  #user details
   def self.from_omniauth(access_token)
     # data = access_token.info
     @user = User.where(email: access_token.info.email).first

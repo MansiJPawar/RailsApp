@@ -12,6 +12,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         session["devise.facebook_data"] = request.env["omniauth.auth"]
         redirect_to new_user_registration_url
       end
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @users.to_csv(['name', 'email']) }
+      end
     end
 
     #server side dataTable
