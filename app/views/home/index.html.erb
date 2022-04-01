@@ -6,7 +6,7 @@
 <% else %>
 <p>Login to continue</p>
 <% end %>
-<%= current_user.email %>
+<!-- <%= current_user.email %>
 1 <br>
 <%= current_user.name %>
 2 <br>
@@ -18,8 +18,9 @@
 5 <br> <br>
 <%= current_user.gender %>
 
-</div>
+</div> -->
 
-MY PROFILE FORM
 
+<% if current_user && current_user.superadmin %>
 <%= render 'shared/admin' %>
+<% end %>
