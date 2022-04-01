@@ -17,3 +17,8 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require_tree .
+
+$(document).ready(function() {
+  $("#userTable").dataTable();
+});
+

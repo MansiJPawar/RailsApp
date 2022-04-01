@@ -67,7 +67,8 @@ class User < ApplicationRecord
     user.name = access_token.info.name
     user.image = access_token.info.image
     user.gender = access_token.info.gender
- 
+    # user.oauth_token = auth.credentials.token
+    # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
     user.save
 
     user

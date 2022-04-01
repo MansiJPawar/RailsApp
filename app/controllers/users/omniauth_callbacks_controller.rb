@@ -1,9 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_action :authenticate_user!
   
-  def facebook
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-  
     def facebook
         # You need to implement the method below in your model (e.g. app/models/user.rb)
         @user = User.from_omniauth(request.env["omniauth.auth"])
@@ -23,6 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def failure
+      session[:user_id] = nil
       redirect_to root_path
     end
   
@@ -60,5 +58,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # def user_params
     #   params.require(:user).permit(:email, :image)
     # end
-  end
 end
