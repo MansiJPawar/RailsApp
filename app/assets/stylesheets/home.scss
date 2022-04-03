@@ -102,9 +102,11 @@ img {
 
 .header__search {
   display: flex;
-  padding: .40rem .75rem;
+  padding: .20rem .55rem;
   background-color: var(--first-color-light);
   border-radius: .25rem;
+  margin-left: 240px;
+  margin-right: 10px;
 }
 
 .header__input {

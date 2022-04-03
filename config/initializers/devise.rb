@@ -273,7 +273,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   #config.omniauth :facebook, '5803436609671482', '04b6e72cdc168608ba1431c840a36dc0'
   config.omniauth :facebook, "5803436609671482", "04b6e72cdc168608ba1431c840a36dc0",
-  callback_url: "http://localhost:2000/users/auth/facebook/callback", :auth_type => 'reauthenticate'
+  callback_url: "http://localhost:2000/users/auth/facebook/callback", :auth_type => 'reauthenticate', :image_size => 'large'
 
 
   # ==> Warden configuration
