@@ -21,12 +21,18 @@ Rails.application.routes.draw do
 
   get "password", to: "passwords#edit", as: :edit_password
   post "password", to: "passwords#update"
+
+  # devise_scope :user do
+  #   delete 'disconnect', to: 'devise/sessions#destroy'
+  # end
+
+ 
   
   # root to: "main#index"
 
   # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
-  # delete 'logout', to: 'session#destroy'
-  # resources :facebook_accounts
+  # delete 'disconnect', to: '/auth/facebook#destroy'
+  # resources :facebook_account
   
   # get "facebook_accounts/:id"
   # delete "facebook_accounts/:id"

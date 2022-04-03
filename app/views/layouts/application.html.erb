@@ -25,7 +25,8 @@
                 
             <!-- User conditions -->
             <% if current_user %> 
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete , class:"float-right" %>
+            
             <% else %>
               <%= link_to 'Sign in with Facebook', omniauth_authorize_path(User, :facebook), method: :post, data: {disable_with: "connecting..."} %>
               <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
@@ -44,7 +45,7 @@
           <div>
             <a href="#" class="nav__link nav__logo">
               <i class='bx bxs-disc nav__icon' ></i>
-              <span class="nav__logo-name">Bedimcode</span>
+              <span class="nav__logo-name">Itworks Infotech</span>
             </a>
   
             <div class="nav__list">

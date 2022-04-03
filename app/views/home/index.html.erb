@@ -3,11 +3,20 @@
 
   <h1>WELCOME TO ITWORKS INFOTECH</h1>
 
-<% if current_user %>
-  <p>You are logged in</p>
+<% if current_user && current_user.superadmin? %>
+  <p>
+    <strong>Hello <%= current_user.username %> ! </strong> 
+    You are now logged in
+  </p>
+<% elsif current_user %>
+  <p>
+    <strong>Hello <%= current_user.name %> ! </strong> 
+    You are now logged in
+  </p>
 <% else %>
   <p>Kindly, Login to continue</p>
 <% end %>
-<!-- Home page -->
 
 </div>
+
+<!-- Home page -->

@@ -19,6 +19,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # end
     end
 
+    def destroy
+      @user = Current.user.find(params[:id])
+      @user.destroy
+      redirect_to root_path, notice: "Account destroyed @#{user.name}"
+    end
+
     #server side dataTable
     # def get_dataset
     #   users = User.from_omniauth(request.env["omniauth.auth"])
