@@ -1,0 +1,41 @@
+<%= form_with(model: profile, local: true) do |form| %>
+<% if profile.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(profile.errors.count, "error") %> denied profile from being saved:</h2>
+
+    <ul>
+    <% profile.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<br/>
+
+<div id="form-box">
+  
+  <div class="field form-group">
+    <%= form.text_field :name, class:"form-control" , placeholder:"name" %>
+  </div><br/>
+
+  <div class="field form-group">
+    <%= form.text_area :gender, class:"form-control" , placeholder:"gender" %>
+  </div>
+    
+  <div class="field form-group">
+    <%= form.text_field :address, class:"form-control" , placeholder:"address" %>
+  </div><br/>
+
+  <div class="field form-group">
+    <%= form.text_area :phone, class:"form-control" , placeholder:"phone" %>
+  </div>
+  <br/>
+  
+  <br/>
+  
+  <div class="actions">
+    <%= form.submit class:"btn btn-light" %>
+  </div><br/> 
+
+</div>  
+<% end %>

@@ -1,0 +1,19 @@
+
+<h1 style="margin: 100px;">Sign Up</h1>
+
+<%= @account %>
+
+<%= form_with model: @account, url: sign_up_path  do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form.text_field :email %>
+  <%= form.password_field :password %>
+  <%= form.password_field :password_confirmation %> 
+  <%= form.submit "Sign Up" %>
+<% end %>

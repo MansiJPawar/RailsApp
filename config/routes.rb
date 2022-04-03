@@ -9,5 +9,26 @@ Rails.application.routes.draw do
   get 'shared/admin'
 
   get 'profiles/index'
+
+  #custom registraion form
+  get "sign_up", to: "registrations#new"
+  post "sign_up", to: "registrations#create"
+  
+  delete "logout", to: "sessions#destroy"
+
+  get "sign_in", to: "sessions#new"
+  post "sign_in", to: "sessions#create"
+
+  get "password", to: "passwords#edit", as: :edit_password
+  post "password", to: "passwords#update"
+  
+  # root to: "main#index"
+
+  # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
+  # delete 'logout', to: 'session#destroy'
+  # resources :facebook_accounts
+  
+  # get "facebook_accounts/:id"
+  # delete "facebook_accounts/:id"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

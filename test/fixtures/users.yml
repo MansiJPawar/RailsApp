@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  address                :string
 #  age                    :integer
+#  deactivated            :boolean
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string

@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  address                :string
 #  age                    :integer
+#  deactivated            :boolean
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
@@ -38,21 +39,56 @@ class User < ApplicationRecord
   enum role: [:user, :superadmin]
 
   #latest user first
-  default_scope {order created_at: :desc}
+  # default_scope {order created_at: :desc}
   
   def username 
     return self.email.split('@')[0].capitalize
   end
 
   #csv
-  def self.to_csv(fields = column_name, options = {})
-    CSV.generate(options) do |csv|
-      csv << fields
-      all.each do |business|
-        csv << user.attributes.values_at(*fields)
-      end
-    end
-  end
+  # def self.to_csv(fields = column_name, options = {})
+  #   CSV.generate(options) do |csv|
+  #     csv << fields
+  #     all.each do |business|
+  #       csv << user.attributes.values_at(*fields)
+  #     end
+  #   end
+  # end
+
+  #active users
+  # def account_active?
+  #   blocked_at.nil?
+  # end
+
+  # def active_for_authentication?
+  #   super && account_active?
+  # end
+
+  # Whenever active_for_authentication? returns false, 
+  # Devise asks the reason why your model is inactive using the inactive_message method.
+  # def inactive_message
+  #   account_active? ? super : :locked
+  # end
+
+
+
+
+  # def active_for_authentication?
+  #   super and self.allowed_to_log_in?
+  # end
+  
+  # def destroy
+  #   update_attributes(deactivated: true) unless deactivated
+  # end
+
+  # def active_for_authentication?
+  #   super && !deactivated
+  # end
+
+
+
+  
+
 
   #user details
   def self.from_omniauth(access_token)

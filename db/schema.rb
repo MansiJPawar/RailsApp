@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_01_092452) do
+ActiveRecord::Schema.define(version: 2022_04_03_180502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facebook_accounts", force: :cascade do |t|
+    t.bigint "account_id"
+    t.string "name"
+    t.string "username"
+    t.string "image"
+    t.string "secret"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_facebook_accounts_on_account_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.string "image"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.integer "age"
+    t.boolean "gender"
+    t.bigint "phone"
+    t.string "uid"
+    t.string "provider"
+    t.boolean "is_active", default: true
+    t.boolean "is_block", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
@@ -44,8 +80,10 @@ ActiveRecord::Schema.define(version: 2022_04_01_092452) do
     t.string "address"
     t.string "name"
     t.text "image"
+    t.boolean "deactivated"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "facebook_accounts", "accounts"
 end

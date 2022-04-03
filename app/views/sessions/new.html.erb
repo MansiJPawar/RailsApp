@@ -1,0 +1,12 @@
+
+<h1 style="margin: 100px;">Sign In</h1>
+
+<%= @account %>
+
+<%= form_with model: @account, url: sign_in_path  do |form| %>
+
+  <%= form.text_field :email %>
+  <%= form.password_field :password %>
+  
+  <%= form.submit "Sign In" %>
+<% end %>
