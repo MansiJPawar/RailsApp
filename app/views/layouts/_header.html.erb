@@ -1,0 +1,29 @@
+<!--========== HEADER ==========-->
+<header class="header">
+  <div class="header__container"> 
+    <img src="<%= asset_url('itworks.jpeg')%>"class="header__img">
+
+    <a href="/" class="header__logo">Itworks Infotech</a>
+    <div class="header__search">
+      <input type="search" placeholder="Search" class="header__input">
+      <i class='bx bx-search header__icon'></i>
+    </div>
+        
+    <!-- User conditions -->
+    <% if current_user %>
+    <!-- delete 'log_out', :to => 'devise/sessions#destroy' -->
+    
+    <!-- <%= link_to "Logout", destroy_user_session_path, method: :delete , class:"float-right" %> -->
+    <%= link_to "log_out", destroy_user_session_path, method: :delete , class:"float-right" %>
+    
+    <% else %>
+      <%= link_to 'Sign in with Facebook', omniauth_authorize_path(User, :facebook), method: :post, data: {disable_with: "connecting..."} %>
+      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <% end %>
+
+    <div class="header__toggle">
+      <i class='bx bx-menu' id="header-toggle"></i>
+    </div>
+  </div>
+</header>

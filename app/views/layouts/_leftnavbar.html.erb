@@ -1,0 +1,41 @@
+<!--========== NAV ==========-->
+<div class="nav" id="navbar">
+  <nav class="nav__container">
+    <div>
+      <a href="/" class="nav__link nav__logo">
+        <i class='bx bxs-disc nav__icon' ></i>
+        <span class="nav__logo-name">Itworks Infotech</span>
+      </a>
+
+      <div class="nav__list">
+        <div class="nav__items">
+          <h3 class="nav__subtitle">Profile</h3>
+            <!-- pages link  -->
+            <a href="/", class="nav__link active" >
+              <i class='bx bx-home nav__icon' ></i>
+              <span class="nav__name">Home</span>
+            </a>
+            <!-- PROFILE VIEW -->
+            <div class="nav__dropdown">
+              <a href="/profiles/index" class="nav__link">
+              <i class='bx bx-user nav__icon' ></i>
+              <span class="nav__name">Profile</span>
+              <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+              </a>
+            
+            <div class="nav__dropdown-collapse">
+              <div class="nav__dropdown-content">
+              <a href="/users/edit" class="nav__dropdown-item">Edit Profile</a>
+              <a href="/profiles/index" class="nav__dropdown-item">View</a>
+            </div>
+          </div>
+        </div>
+          <!-- USER LIST FOR ADMIN -->
+        <% if current_user && current_user.superadmin? %>
+          <%= link_to 'Userlist', shared_admin_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+</div>
