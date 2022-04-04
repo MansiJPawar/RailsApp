@@ -87,3 +87,5 @@ gem "jquery-datatables", "~> 1.10"
 gem 'carrierwave'
 
 gem 'image_processing', '~> 1.2'
+
+gem 'pry'
