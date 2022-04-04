@@ -12,6 +12,7 @@
 #  first_name             :string
 #  gender                 :boolean
 #  image                  :text
+#  job_profile            :string
 #  last_name              :string
 #  name                   :string
 #  phone_no               :bigint
