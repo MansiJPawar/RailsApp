@@ -1,6 +1,5 @@
 class  Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configuration_sign_up_params, only: [:create]
-  before_action :configuration_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters, only: [:create, :edit]
 
   def create 
     super
@@ -10,11 +9,10 @@ class  Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def configuration_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:age, :gender, :phone_no, :image, :address, :name])
-  end
+  protected
 
-  def configuration_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys:  [:age, :gender, :phone_no, :image, :address])
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_no, :age, :gender, :address, :email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_no, :age, :gender, :address, :email])   
   end
 end
