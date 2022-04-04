@@ -1,4 +1,4 @@
-<div style="margin: 100px;">
+<div id="comman-margin">
   <h2><%= current_user.name %> <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
