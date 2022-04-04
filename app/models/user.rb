@@ -71,8 +71,11 @@ class User < ApplicationRecord
   # end
 
 
-  def account_active?
-    blocked_at.nil?
+
+  def active_user?
+    if current_user.email.present? && current_user.deactivated
+
+    end
   end
 
   #active users
