@@ -15,7 +15,6 @@ class  Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configuration_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys:  [:age, :gender, :phone_no, :image_cache, :address])
+    devise_parameter_sanitizer.permit(:account_update, keys:  [:age, :gender, :phone_no, :image, :address])
   end
-
 end

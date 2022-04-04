@@ -1,3 +1,0 @@
-class FacebookAccounts < ApplicationController
-
-end
