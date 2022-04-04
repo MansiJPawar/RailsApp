@@ -8,10 +8,12 @@
     <!-- display only if image is present -->
     <%= image_tag current_user.image, size:"150x150" if current_user.image? %>
   </div>
-<!-- 
+
   <div class="field">
-    <%= current_user.name %>
-  </div> -->
+    <%= f.label :name %><br />
+    <%=  f.text_field :name, class:'form-control' %>
+  </div>
+
   <br>
   <div class="field">
     <%= f.label :email %><br />
