@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  address                :string
 #  age                    :integer
+#  avatar                 :string
 #  deactivated            :boolean
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -35,8 +36,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable,  :omniauthable, :omniauth_providers => [:facebook]
   
+  # after_commit :add_default_avatar, on: %i[create update]
+  
   #enum roles
   enum role: [:user, :superadmin]
+
+  #image
+  # mount_uploader :avatar, AvatarUploader
+  # has_one_attached :avatar
+
+  # def avatar_thumbnail 
+  #   if avatar.attached?
+  #     avatar.variant(resize: "150x150").processed 
+  #   else
+  #     "/perfil.jpg"
+  #   end
+  # end
 
   #latest user first
   # default_scope {order created_at: :desc}
@@ -54,6 +69,11 @@ class User < ApplicationRecord
   #     end
   #   end
   # end
+
+
+  def account_active?
+    blocked_at.nil?
+  end
 
   #active users
   # def account_active?
@@ -125,5 +145,21 @@ class User < ApplicationRecord
       end
     end
   end
+
+  private 
+
+  # def default_avatar 
+  #   unless avatar.attached?
+  #     avatar.attach(
+  #       io: File.open(
+  #         Rails.root.join(
+  #           'app','assets','images','perfil.jpg'
+  #         )
+  #       ),
+  #       filename: 'perfil.jpg',
+  #       content_type: 'image/jpg'
+  #     )
+  #   end
+  # end
     
 end

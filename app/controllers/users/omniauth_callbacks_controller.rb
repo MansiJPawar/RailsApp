@@ -4,17 +4,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def facebook
       # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.from_omniauth(request.env["omniauth.auth"])
-  
-      # @user = User.where(name: auth.info.email).first_or_initialize 
-      # @user.update[
-      #   name: auth.info.uid,
-      #   image: auth.info.image,
-      #   phone_no: access_token.name,
-      #   address: access_token.info.name,
-      #   age: access_token.info.image,
-      #   gender: access_token.info.gender,
-      # ]
-      # redirect_to users_path, notice: "Connected to your account"
 
       if @user.persisted?
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
@@ -22,7 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       else
         session["devise.facebook_data"] = request.env["omniauth.auth"]
         redirect_to new_user_registration_url
-      end
+      end  
 
       # respond_to do |format|
       #   format.html
@@ -41,6 +30,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #   users = User.from_omniauth(request.env["omniauth.auth"])
     #   render json: { users: User.all }
     # end
+
+    # def toggle_active
+    #   @user = User.find(params[:id])
+    #   status = !@user.active
+    #   @user.active = status
+    #   respond_to do |format|
+    #     if current_user.exist? && current_user.active? 
+    #       @user.save
+    #       render json: "Active User"
+    #     else
+    #       render json: "You are blocked"
+    #     end
+    #   end
+    # end
+    
 
     def failure
       flash[:error] = 'There was a problem signing you in. Please register or try signing in later.'

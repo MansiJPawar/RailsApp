@@ -6,9 +6,10 @@
             <div class="card">
               <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
-                <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> -->
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="90">
+                             
                   <div class="mt-3">
-                    <%= current_user.email %>
+                    <%= current_user.username %>
                     <p class="text-secondary mb-1">Full Stack Developer</p>
                     <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                     <%= link_to 'Edit', edit_user_registration_path , class:"btn btn-outline-primary" %>
@@ -46,7 +47,7 @@
                     <%= current_user.age %>
                   </div>
                 </div>
-                <hr>
+                <!-- <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Gender</h6>
@@ -54,8 +55,8 @@
                   <div class="col-sm-9 text-secondary">
                     <%= current_user.gender %>
                   </div>
-                </div>
-                <hr>
+                </div> -->
+                <hr> 
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Address</h6>
@@ -80,9 +81,11 @@
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
               <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> -->
-              <%= image_tag current_user.image, size: '100x100' unless current_user.image.nil? %>
+            
+                <%= image_tag current_user.image, size: '100x100' unless current_user.image.nil? %>
+              
                 <div class="mt-3">
-                  <%= current_user.email %>
+                  <%= current_user.username %>
                   <p class="text-secondary mb-1">Full Stack Developer</p>
                   <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                   <%= link_to 'Edit', edit_user_registration_path , class:"btn btn-outline-primary" %>

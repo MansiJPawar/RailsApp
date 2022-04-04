@@ -14,20 +14,30 @@ Rails.application.routes.draw do
 
   get 'profiles/index'
 
+  # resources :shared do
+  #   member do
+  #       patch :toggle_enable_status
+  #   end
+  # end
+
+
+  # get 'user/:id/toggle-active' => 'user#toggle_active'
+
+
   # get "Update", to: "devise/sessions#create"
   # post "Update", to: "devise/sessions#create"
 
-  #custom registraion form
-  get "sign_up", to: "registrations#new"
-  post "sign_up", to: "registrations#create"
+  # #custom registraion form
+  # get "sign_up", to: "registrations#new"
+  # post "sign_up", to: "registrations#create"
   
-  delete "logout", to: "sessions#destroy"
+  # delete "logout", to: "sessions#destroy"
 
-  get "sign_in", to: "sessions#new"
-  post "sign_in", to: "sessions#create"
+  # get "sign_in", to: "sessions#new"
+  # post "sign_in", to: "sessions#create"
 
-  get "password", to: "passwords#edit", as: :edit_password
-  post "password", to: "passwords#update"
+  # get "password", to: "passwords#edit", as: :edit_password
+  # post "password", to: "passwords#update"
 
 
   # root to: "main#index"

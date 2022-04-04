@@ -83,3 +83,7 @@ gem 'activerecord-session_store'
 gem "omniauth-rails_csrf_protection"
 
 gem "jquery-datatables", "~> 1.10"
+
+gem 'carrierwave'
+
+gem 'image_processing', '~> 1.2'
