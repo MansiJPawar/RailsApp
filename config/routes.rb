@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   root 'home#index'
   # root 'profiles#index'
   get 'shared/admin'
+  post 'shared/admin'
+
+  # resources :shared
   get 'profiles/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

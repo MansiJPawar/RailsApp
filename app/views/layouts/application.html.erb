@@ -7,8 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <!--========== BOX ICONS ==========-->
+      <!--========== BOX ICON ==========-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   </head>
     <body>
@@ -16,6 +15,8 @@
         <%= render "layouts/header" %>
       <!--========== NAV ==========-->
         <%= render "layouts/leftnavbar" %>
-    <%= yield %>
+      <!--========== CONTENT ==========-->  
+        <%= yield %>
+    
   </body>
 </html>

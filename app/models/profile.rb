@@ -20,6 +20,5 @@
 #  updated_at :datetime         not null
 #
 class Profile < ApplicationRecord
-  def index
-  end
+
 end
