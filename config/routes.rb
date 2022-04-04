@@ -1,10 +1,25 @@
 Rails.application.routes.draw do
   
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  # devise_for :users, :controllers omniauth_callbacks: "users/omniauth_callbacks"{ registrations: "users/registrations" } 
  
   devise_scope :user do
     delete 'log_out', :to => 'devise/sessions#destroy'
   end
+
+  #####in routes
+  devise_for :users,:controllers => { 
+    :registrations =>  "users/registrations",
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+  # #####in routes
+  # devise_for :users,:controllers => { 
+  #   :sessions => "users/sessions", 
+  #   :registrations =>  "users/registrations", 
+  #   :passwords =>  "users/passwords",
+  #   :confirmations =>  "users/confirmations",
+  #   omniauth_callbacks: 'users/omniauth_callbacks'
+  # }
 
   #home page
   root 'home#index'

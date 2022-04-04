@@ -14,6 +14,10 @@ class RegistrationsController < ApplicationController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:age, :gender, :phone_no, :image, :address, :name])
       # devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
   end
+
+  def configure_account_update_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys:  [:age, :gender, :phone_no, :image_cache, :address])
+  end
   # #to create new account 
   # def new 
   #   #instance var to be visible in views
