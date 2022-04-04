@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
  
+  devise_scope :user do
+    delete 'log_out', :to => 'devise/sessions#destroy'
+  end
+
   #home page
   root 'home#index'
 
@@ -9,6 +13,9 @@ Rails.application.routes.draw do
   get 'shared/admin'
 
   get 'profiles/index'
+
+  # get "Update", to: "devise/sessions#create"
+  # post "Update", to: "devise/sessions#create"
 
   #custom registraion form
   get "sign_up", to: "registrations#new"
@@ -22,12 +29,7 @@ Rails.application.routes.draw do
   get "password", to: "passwords#edit", as: :edit_password
   post "password", to: "passwords#update"
 
-  # devise_scope :user do
-  #   delete 'disconnect', to: 'devise/sessions#destroy'
-  # end
 
- 
-  
   # root to: "main#index"
 
   # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"

@@ -24,9 +24,12 @@
             </div>
                 
             <!-- User conditions -->
-            <% if current_user %> 
-              <%= link_to "Logout", destroy_user_session_path, method: :delete , class:"float-right" %>
+            <% if current_user %>
+    <!-- delete 'log_out', :to => 'devise/sessions#destroy' -->
             
+              <!-- <%= link_to "Logout", destroy_user_session_path, method: :delete , class:"float-right" %> -->
+              <%= link_to "log_out", destroy_user_session_path, method: :delete , class:"float-right" %>
+              
             <% else %>
               <%= link_to 'Sign in with Facebook', omniauth_authorize_path(User, :facebook), method: :post, data: {disable_with: "connecting..."} %>
               <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>

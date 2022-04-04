@@ -5,6 +5,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.from_omniauth(request.env["omniauth.auth"])
   
+      # @user = User.where(name: auth.info.email).first_or_initialize 
+      # @user.update[
+      #   name: auth.info.uid,
+      #   image: auth.info.image,
+      #   phone_no: access_token.name,
+      #   address: access_token.info.name,
+      #   age: access_token.info.image,
+      #   gender: access_token.info.gender,
+      # ]
+      # redirect_to users_path, notice: "Connected to your account"
+
       if @user.persisted?
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
@@ -32,26 +43,25 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # end
 
     def failure
-      # session[:user_id] = nil
-      flash[:error] = "Invalid SignIn try later"
+      flash[:error] = 'There was a problem signing you in. Please register or try signing in later.'
       redirect_to new_user_registration_url
     end
 
-    # def update
-    #   respond_to do |format|
-    #     if @user.update(user_params)
-    #       format.html { redirect_to home_url(@user), notice: "User was successfully updated." }
-    #       format.json { render :show, status: :ok, location: @user }
-    #     else
-    #       format.html { render :edit, status: :unprocessable_entity }
-    #       format.json { render json: @user.errors, status: :unprocessable_entity }
-    #     end
-    #   end
-    # end  
+    def update
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { redirect_to home_url(@user), notice: "User was successfully updated." }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    end  
 
-    # private 
+    private 
 
-    # def user_params 
-    #   params(:user).permit(:gender,:address,:phone_no)
-    # end
+    def user_params 
+      params(:user).permit(:gender,:address,:phone_no,:age)
+    end
 end

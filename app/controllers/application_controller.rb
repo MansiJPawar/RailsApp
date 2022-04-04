@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
+  def new_session_path(scope)
+    new_user_session_path
+  end
+
   # def require_account_logged_in
   #   redirect_to sign_in_path, alert: "need to sign in first" if Current.account.nil? 
   # end

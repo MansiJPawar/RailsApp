@@ -22,6 +22,4 @@
 class Profile < ApplicationRecord
   def index
   end
-
-  
 end

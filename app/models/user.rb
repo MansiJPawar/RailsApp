@@ -70,9 +70,6 @@ class User < ApplicationRecord
   #   account_active? ? super : :locked
   # end
 
-
-
-
   # def active_for_authentication?
   #   super and self.allowed_to_log_in?
   # end
@@ -85,32 +82,48 @@ class User < ApplicationRecord
   #   super && !deactivated
   # end
 
+  # #user details
+  # def self.from_omniauth(access_token)
+  #   # data = access_token.info
+  #   @user = User.where(email: access_token.info.email).first
+  #   # Uncomment the section below if you want users to be created if they don't exist
+  #   unless user
+  #     @user = User.create(
+  #       email: access_token.info.email,
+  #       password: Devise.friendly_token[0,20]
+  #     )
+  #   end
+  #   @user.uid = access_token.uid
+  #   @user.provider = access_token.provider
+  #   @user.first_name = access_token.name
+  #   @user.name = access_token.info.name
+  #   @user.image = access_token.info.image
+  #   @user.gender = access_token.info.gender
+  #   # user.oauth_token = auth.credentials.token
+  #   # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  #   @user.save
 
+  #   @user
+  # end
 
-  
-
-
-  #user details
-  def self.from_omniauth(access_token)
-    # data = access_token.info
-    @user = User.where(email: access_token.info.email).first
-    # Uncomment the section below if you want users to be created if they don't exist
-    unless user
-      @user = User.create(
-        email: access_token.info.email,
-        password: Devise.friendly_token[0,20]
-      )
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.image = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails, 
+      # uncomment the line below to skip the confirmation emails.
+      user.skip_confirmation!
     end
-    @user.uid = access_token.uid
-    @user.provider = access_token.provider
-    @user.first_name = access_token.name
-    @user.name = access_token.info.name
-    @user.image = access_token.info.image
-    @user.gender = access_token.info.gender
-    # user.oauth_token = auth.credentials.token
-    # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-    @user.save
-
-    @user
   end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+    
 end
