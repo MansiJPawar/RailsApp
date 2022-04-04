@@ -36,37 +36,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
     end  
-
-
-    #server side dataTable
-    # def get_dataset
-    #   users = User.from_omniauth(request.env["omniauth.auth"])
-    #   render json: { users: User.all }
-    # end
-
-    # def toggle_active
-    #   @user = User.find(params[:id])
-    #   status = !@user.active
-    #   @user.active = status
-    #   respond_to do |format|
-    #     if current_user.exist? && current_user.active? 
-    #       @user.save
-    #       render json: "Active User"
-    #     else
-    #       render json: "You are blocked"
-    #     end
-    #   end
-    # end
-
-    # respond_to do |format|
-    #   format.html
-    #   format.csv { send_data @users.to_csv(['name', 'email']) }
-    # end
-    
-
-    # private 
-
-    # def user_params 
-    #   params(:user).permit(:gender,:address,:phone_no,:age)
-    # end
 end
