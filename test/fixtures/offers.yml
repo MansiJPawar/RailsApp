@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  coupon_code: MyString
+  product: one
+  is_expired: false
+  end_date: 
+  start_date: 
+
+two:
+  name: MyString
+  coupon_code: MyString
+  product: two
+  is_expired: false
+  end_date: 
+  start_date: 

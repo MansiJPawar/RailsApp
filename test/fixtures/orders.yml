@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_placed: false
+  payment_amount: 
+  delivery_charges: 
+  product: one
+  user: one
+
+two:
+  is_placed: false
+  payment_amount: 
+  delivery_charges: 
+  product: two
+  user: two
