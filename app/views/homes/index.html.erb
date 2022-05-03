@@ -1,15 +1,18 @@
-
-  <% if current_user %>
+<%# Devise User %>
+<% if current_user %>
   <%= link_to 'Sign In' , new_user_session_path %>
   <%= link_to 'Sign Out' , destroy_user_session_path, method: :delete %>
-  <% else %>
+<% else %>
   <%= link_to 'Sign Up' , new_user_registration_path %>
-  <% end %>
+<% end %>
+<%# Devise User %>
 
-  <% if current_user && current_user.vendor? %>
-    <h1>Vendor</h1>
-    <%= link_to 'Edit Profile', edit_user_registration_path %>
-  <% else %>
-    <h2>User</h2>
-    <%= link_to 'Edit Profile', edit_user_registration_path %>
-  <% end %>
+<%# Check User Role %>
+<% if current_user && current_user.vendor? %>
+  <h1>Vendor</h1>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+<% else %>
+  <h2>User</h2>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+<% end %>
+<%# Check User Role %>
