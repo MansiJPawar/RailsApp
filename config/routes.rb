@@ -51,8 +51,8 @@
 
 Rails.application.routes.draw do
   #devise user
-  devise_for :users
-
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  
   #active admin
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
