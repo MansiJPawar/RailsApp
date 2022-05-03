@@ -21,6 +21,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Notification < ApplicationRecord
+  #association
   belongs_to :user
   belongs_to :product
 end

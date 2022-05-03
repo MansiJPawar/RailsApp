@@ -16,5 +16,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Cart < ApplicationRecord
+  #association
   belongs_to :user
 end

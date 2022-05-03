@@ -20,6 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Feedback < ApplicationRecord
+  #association
   belongs_to :user
   belongs_to :product
 end

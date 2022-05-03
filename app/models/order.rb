@@ -22,6 +22,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Order < ApplicationRecord
+  #association
   belongs_to :product
   belongs_to :user
 end

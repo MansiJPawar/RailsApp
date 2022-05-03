@@ -41,5 +41,7 @@ class User < ApplicationRecord
   enum role: [:user, :vendor]
 
   #association
-
+  has_many :notifications
+  has_many :orders
+  has_many :product
 end

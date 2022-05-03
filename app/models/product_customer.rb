@@ -19,6 +19,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class ProductCustomer < ApplicationRecord
+  #association
   belongs_to :user
   belongs_to :product
 end

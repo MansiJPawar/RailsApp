@@ -21,5 +21,6 @@
 #  fk_rails_...  (product_id => products.id)
 #
 class Offer < ApplicationRecord
+  #association
   belongs_to :product
 end

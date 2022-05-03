@@ -19,6 +19,7 @@
 #  fk_rails_...  (product_id => products.id)
 #
 class ProductCart < ApplicationRecord
+  #association
   belongs_to :cart
   belongs_to :product
 end
